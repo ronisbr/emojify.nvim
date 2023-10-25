@@ -28,7 +28,7 @@ function M.emojify()
   local buf = vim.api.nvim_get_current_buf()
 
   -- Get the lines in the buffer.
-  local lines = vim.api.nvim_buf_get_lines(buf, win_lines[1] - 1, win_lines[2] - 1, true)
+  local lines = vim.api.nvim_buf_get_lines(buf, win_lines[1] - 1, win_lines[2], true)
 
   -- Get the cursor position.
   local cur_pos = vim.api.nvim_win_get_cursor(0)
