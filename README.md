@@ -22,8 +22,8 @@ The recommended way to install the plugin is using lazy.nvim as plugin manager:
   lazy = true,
 }
 
-This plugin requires `conceallevel >= 1` to work properly. To set it, execute:
-`:set conceallevel=1`.
+This plugin requires `conceallevel` 1 or 2 to work properly. To set it, execute:
+`:set conceallevel=1` or `:set conceallevel=2`.
 ```
 ## Usage
 

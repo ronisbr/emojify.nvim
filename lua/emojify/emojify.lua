@@ -30,9 +30,6 @@ function M.emojify()
   -- Get the lines in the buffer.
   local lines = vim.api.nvim_buf_get_lines(buf, win_lines[1] - 1, win_lines[2], true)
 
-  -- Get the cursor position.
-  local cur_pos = vim.api.nvim_win_get_cursor(0)
-
   -- Clear everything in our namepsace at the current buffer.
   vim.api.nvim_buf_clear_namespace(buf, ns, 0, -1)
 
@@ -43,11 +40,6 @@ function M.emojify()
 
     -- `row_id` is the row number in the buffer related to the `line`.
     local row_id = win_lines[1] + k - 2
-
-    -- We should not emojify the line with the cursor.
-    if (row_id + 1) == cur_pos[1] then
-      goto continue
-    end
 
     cend = 0
 
@@ -68,11 +60,9 @@ function M.emojify()
           row_id,
           cstart - 1,
           {
-            conceal       = "",
-            end_col       = cend - 2,
-            end_row       = row_id,
-            virt_text     = { { emoji, "" } },
-            virt_text_pos = "overlay",
+            conceal = emoji,
+            end_col = cend,
+            end_row = row_id,
           })
       end
     end
